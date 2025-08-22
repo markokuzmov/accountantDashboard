@@ -31,11 +31,14 @@ auth_url = auth_client.get_authorization_url(scopes)
 
 @app.route("/", methods=['GET'])
 def index():
-    return render_template("index.html")
+    logged_in = os.getenv('ACCESS_TOKEN') is not None
+    return render_template("index.html", logged_in=logged_in)
+
 
 @app.route("/auth", methods=['GET'])
 def auth():
     return redirect(auth_url)
+
 
 @app.route("/auth/code", methods=['GET', 'POST'])
 def get_token():

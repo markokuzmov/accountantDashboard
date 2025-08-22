@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>Hello World</h1>
-    <a href="{{ url_for('auth') }}">Authorize</a>
+    {% if logged_in %}
+        <h3>Logged in</h3>
+    {% else %}
+        <h3>Not logged in</h3>
+    {% endif %}
+    <a href="{{ url_for('auth') }}">Login with Quickbooks</a>
 </body>
 </html>
