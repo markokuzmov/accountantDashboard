@@ -6,6 +6,8 @@ from intuitlib.enums import Scopes
 
 from flask import Flask, render_template, redirect, url_for, request
 
+import requests
+
 app = Flask(__name__)
 
 load_dotenv()
@@ -50,10 +52,16 @@ def get_token():
     os.environ["ACCESS_TOKEN"] = auth_client.access_token
     os.environ["REFRESH_TOKEN"] = auth_client.refresh_token
     
-    print(os.getenv('ACCESS_TOKEN'))
-    print(os.getenv('REFRESH_TOKEN'))
-    
     return redirect(url_for('index'))
+
+
+def get_company_data():
+    access_token = os.getenv('ACCESS_TOKEN')
+    url = 'https://sandbox.api.intuit.com'
+    
+    response = requests.get(
+        
+    )
 
 
 if __name__ == "__main__":
