@@ -9,6 +9,19 @@
     <h1>Hello World</h1>
     {% if logged_in %}
         <h3>Logged in</h3>
+        <ul>
+        {% for account in accounts %}
+            <li>
+                <h4>{{ account.Name }}</h4>
+                <ul>
+                    <li>Account ID: {{ account.Id }}</li>
+                    <li>AccountType: {{ account.AccountType }}</li>
+                    <li>AccountSubType: {{ account.AccountSubType }}</li>
+                    <li>Last Reconciled: {{ last_reconciled_dates[account.Id] }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
     {% else %}
         <h3>Not logged in</h3>
     {% endif %}
